@@ -15,4 +15,10 @@
 
 const Route = use('Route')
 
+Route.group(() => {
+  Route.resource('users', 'UserController').apiOnly()
+})
+  .formats(['json'])
+  .prefix('api')
+
 Route.any('*', 'NuxtController.render')
