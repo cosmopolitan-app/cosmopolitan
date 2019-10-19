@@ -11,13 +11,17 @@
 |
 */
 
-// const Factory = use('Factory')
+const Factory = use('Factory')
 
-/**
-  Factory.blueprint('App/Models/User', (faker) => {
-    return {
-      username: faker.username()
-    }
-  })
-*/
+Factory.blueprint('App/Models/User', (faker) => {
+  const random = Math.random()
+  const role =
+    random > 0.7 ? 'admin' : random > 0.5 ? 'event-manager' : 'member'
 
+  return {
+    email: faker.email(),
+    name: faker.name(),
+    password: faker.sentence(),
+    role
+  }
+})
