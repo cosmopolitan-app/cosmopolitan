@@ -12,7 +12,10 @@ class UsersSchema extends Schema {
         .notNullable()
         .unique()
       table.string('name').notNullable()
+      table.string('lastname')
+      table.datetime('birthday', { precision: 6 })
       table.string('password').notNullable()
+      table.boolean('gender')
       table
         .enum('role', ['member', 'event-manager', 'admin'])
         .defaultTo('member')
