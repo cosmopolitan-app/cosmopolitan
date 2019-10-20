@@ -25,3 +25,44 @@ Factory.blueprint('App/Models/User', (faker) => {
     role
   }
 })
+
+const cities = [
+  3405863,
+  3405870,
+  3405924,
+  3405940,
+  3405954,
+  3406160,
+  3406196,
+  3406263,
+  3406318,
+  3406429,
+  3406442,
+  3406545,
+  3406910,
+  3406961,
+  3406996,
+  3407194,
+  3407216,
+  3407243,
+  3407258,
+  3407327,
+  3407357
+]
+
+let i = 0
+
+Factory.blueprint('App/Models/Event', (faker) => {
+  // eslint-disable-next-line
+  const city_id = cities[i++ % cities.length]
+
+  return {
+    open: faker.bool(),
+    title: faker.sentence(),
+    description: faker.sentence(),
+    location: faker.address(),
+    tags: faker.n(faker.word, 5),
+    start: faker.date(),
+    city_id
+  }
+})

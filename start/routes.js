@@ -20,6 +20,14 @@ Route.group(() => {
     .apiOnly()
     .middleware(new Map([[['users.update', 'users.destroy'], ['auth']]]))
 
+  Route.resource('events', 'EventController')
+    .apiOnly()
+    .middleware(
+      new Map([
+        [['events.store', 'events.update', 'events.destroy'], ['auth', 'staff']]
+      ])
+    )
+
   Route.get('me', 'UserController.me').middleware(['auth'])
   Route.post('login', 'UserController.login')
 })
