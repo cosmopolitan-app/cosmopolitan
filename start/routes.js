@@ -16,7 +16,12 @@
 const Route = use('Route')
 
 Route.group(() => {
-  Route.resource('users', 'UserController').apiOnly()
+  Route.resource('users', 'UserController')
+    .apiOnly()
+    .middleware(new Map([[['users.update', 'users.destroy'], ['auth']]]))
+
+  Route.get('me', 'UserController.me').middleware(['auth'])
+  Route.post('login', 'UserController.login')
 })
   .formats(['json'])
   .prefix('api')

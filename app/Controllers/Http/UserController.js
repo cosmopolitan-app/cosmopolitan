@@ -24,12 +24,21 @@ class UserController {
     return user
   }
 
-  async update({ request }) {
+  async update({ request, auth, response }) {
+    const currentUser = auth.current.user
+    const isAdmin = currentUser.role === 'admin'
+
     // TODO: verify duplicate email
-    const data = request.only(['name', 'email', 'password'])
+    const data = isAdmin
+      ? request.all()
+      : request.only(['name', 'email', 'password'])
 
     const { id } = request.params
     const user = await User.findOrFail(id)
+
+    if (!isAdmin && user.id !== currentUser.id) {
+      return response.status(403).send('Forbidden')
+    }
 
     user.merge(data)
     await user.save()
@@ -37,10 +46,32 @@ class UserController {
     return user
   }
 
-  async destroy({ request }) {
+  async destroy({ request, auth, response }) {
+    const currentUser = auth.current.user
+    const isAdmin = currentUser.role === 'admin'
+
     const { id } = request.params
     const user = await User.findOrFail(id)
+
+    if (!isAdmin && user.id !== currentUser.id) {
+      return response.status(403).send('Forbidden')
+    }
+
     await user.delete()
+  }
+
+  login({ request, auth }) {
+    const { refreshToken, email, password } = request.all()
+
+    if (refreshToken) {
+      return auth.generateForRefreshToken(refreshToken)
+    }
+
+    return auth.withRefreshToken().attempt(email, password)
+  }
+
+  me({ auth }) {
+    return auth.getUser()
   }
 }
 
