@@ -13,6 +13,6 @@ init-db:
 rm-db:
 	sudo docker rm -f meetup-postgres
 
-remake-rb:
+remake-db:
 	make rm-db; \
 	make init-db

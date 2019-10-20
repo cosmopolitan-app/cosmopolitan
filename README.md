@@ -4,7 +4,15 @@
 
 ## Build Setup
 
+You need docker!
+
 ``` bash
+# Setup basic configuration
+$ cp .env.example .env
+
+# Create a docker container with the database
+$ make init-db
+
 # install dependencies
 $ npm run install
 
