@@ -28,6 +28,8 @@ Route.group(() => {
       ])
     )
 
+  Route.get('cities', 'CityController.index').middleware(['staff'])
+
   Route.get('me', 'UserController.me').middleware(['auth'])
   Route.post('login', 'UserController.login')
 })
