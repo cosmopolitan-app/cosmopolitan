@@ -1,5 +1,11 @@
 'use strict'
 
+const Config = use('Config')
+
+const seconds = 60
+const minutes = 60
+const hours = minutes * seconds
+
 module.exports = {
   /*
   |--------------------------------------------------------------------------
@@ -13,7 +19,7 @@ module.exports = {
   | Available Serializers - lucid, database
   |
   */
-  authenticator: 'session',
+  authenticator: 'jwt',
 
   /*
   |--------------------------------------------------------------------------
@@ -69,7 +75,8 @@ module.exports = {
     uid: 'email',
     password: 'password',
     options: {
-      secret: 'self::app.appKey'
+      secret: Config.get('app.appKey'),
+      expiresIn: 24 * hours
     }
   }
 }
