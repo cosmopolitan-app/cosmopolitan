@@ -19,7 +19,7 @@ class UserSeeder {
     await User.create({
       name: 'Admin',
       lastname: '',
-      bithday: '1980-12-12',
+      birthday: '1980-12-12',
       gender: 'other',
       email: 'admin@example.org',
       password: '123456',
@@ -29,7 +29,7 @@ class UserSeeder {
     await User.create({
       name: 'Event',
       lastname: 'Manager',
-      bithday: '1980-09-04',
+      birthday: '1980-09-04',
       gender: 'other',
       email: 'manager@example.org',
       password: '123456',
