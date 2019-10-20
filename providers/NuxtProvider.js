@@ -14,7 +14,7 @@ class NuxtProvider extends ServiceProvider {
     if (!Helpers.isAceCommand()) {
       const nuxt = this.app.use('Service/Nuxt')
       if (nuxt.options.dev) {
-        await new Builder(nuxt).build()
+        new Builder(nuxt).build()
       } else {
         await nuxt.ready()
       }
