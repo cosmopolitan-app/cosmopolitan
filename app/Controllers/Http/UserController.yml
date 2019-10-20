@@ -1,0 +1,63 @@
+/users:
+  get:
+    security:
+      - Bearer: []
+    description: List users
+    produces:
+      - application/json
+    parameters:
+      - name: page
+        description: Current page
+        in: query
+        required: false
+        type: number
+        default: 1
+    responses:
+      200:
+        description: "User list"
+        schema:
+          type: "array"
+          items:
+            $ref: '#/definitions/User'
+
+/users/{id}:
+  get:
+    security:
+      - Bearer: []
+    description: List users
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        description: ID
+        in: path
+        required: false
+        type: number
+        default: 1
+    responses:
+      200:
+        description: "User list"
+        schema:
+          $ref: '#/definitions/User'
+
+/login:
+  post:
+    description: Login to the application
+    accepts:
+      - application/json
+    produces:
+      - application/json
+    parameters:
+      - name: email
+        description: Email.
+        in: body
+        required: true
+        type: string
+      - name: password
+        description: User's password.
+        in: body
+        required: true
+        type: string
+    responses:
+      200:
+        description: Credentials
