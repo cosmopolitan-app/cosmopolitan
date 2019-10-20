@@ -16,7 +16,7 @@ class UserController {
   async store({ request }) {
     // TODO: verify duplicate email
     const data = request.only([
-      'firstname',
+      'name',
       'lastname',
       'birthday',
       'gender',
@@ -39,7 +39,7 @@ class UserController {
     const data = isAdmin
       ? request.all()
       : request.only([
-          'firstname',
+          'name',
           'lastname',
           'birthday',
           'gender',

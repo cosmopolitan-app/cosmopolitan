@@ -17,20 +17,20 @@ const User = use('App/Models/User')
 class UserSeeder {
   async run() {
     await User.create({
-      firstname: 'Ad',
-      lastname: 'Min',
+      name: 'Admin',
+      lastname: '',
       bithday: '1980-12-12',
-      gender: true,
+      gender: 'other',
       email: 'admin@example.org',
       password: '123456',
       role: 'admin'
     })
 
     await User.create({
-      firstname: 'Event',
+      name: 'Event',
       lastname: 'Manager',
       bithday: '1980-09-04',
-      gender: false,
+      gender: 'other',
       email: 'manager@example.org',
       password: '123456',
       role: 'event-manager'
