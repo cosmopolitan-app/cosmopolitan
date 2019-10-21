@@ -34,6 +34,8 @@ class UserSeeder {
       Factory.model('App/Models/User').createMany(100),
       Factory.model('App/Models/Event').createMany(100)
     ])
+
+    await Factory.model('App/Models/Session').createMany(1000)
   }
 }
 

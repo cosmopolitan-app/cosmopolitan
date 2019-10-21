@@ -18,7 +18,11 @@ class EventController {
 
   show({ request }) {
     const { id } = request.params
-    return Event.findOrFail(id)
+    return Event.query()
+      .with('sessions')
+      .with('city')
+      .where('id', id)
+      .firstOrFail(id)
   }
 
   async store({ request }) {
