@@ -8,6 +8,10 @@ class Event extends Model {
     return this.belongsTo('App/Models/City')
   }
 
+  sessions() {
+    return this.hasMany('App/Models/Session')
+  }
+
   setTags(obj) {
     return JSON.stringify(obj)
   }

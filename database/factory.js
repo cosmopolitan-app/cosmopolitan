@@ -50,12 +50,7 @@ const cities = [
   3407357
 ]
 
-let i = 0
-
 Factory.blueprint('App/Models/Event', (faker) => {
-  // eslint-disable-next-line
-  const city_id = cities[i++ % cities.length]
-
   return {
     open: faker.bool(),
     title: faker.sentence(),
@@ -63,6 +58,15 @@ Factory.blueprint('App/Models/Event', (faker) => {
     location: faker.address(),
     tags: faker.n(faker.word, 5),
     start: faker.date(),
-    city_id
+    city_id: faker.pickone(cities)
+  }
+})
+
+Factory.blueprint('App/Models/Session', (faker) => {
+  return {
+    event_id: faker.integer({ min: 1, max: 100 }),
+    title: faker.sentence(),
+    description: faker.sentence(),
+    type: faker.pickone(['talk', 'workshop', 'tutorial'])
   }
 })

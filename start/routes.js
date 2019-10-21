@@ -28,6 +28,17 @@ Route.group(() => {
       ])
     )
 
+  Route.resource('sessions', 'SessionController')
+    .apiOnly()
+    .middleware(
+      new Map([
+        [
+          ['sessions.store', 'sessions.update', 'sessions.destroy'],
+          ['auth', 'staff']
+        ]
+      ])
+    )
+
   Route.get('cities', 'CityController.index').middleware(['staff'])
 
   Route.get('me', 'UserController.me').middleware(['auth'])
