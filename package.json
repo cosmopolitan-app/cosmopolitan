@@ -36,7 +36,8 @@
     "@nuxtjs/vuetify": "^1.0.0",
     "cross-env": "^5.2.0",
     "nuxt": "^2.0.0",
-    "pg": "^7.12.1"
+    "pg": "^7.12.1",
+    "vue-i18n": "^8.15.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
