@@ -1,6 +1,4 @@
-# meetup
-
-> meetup
+![Cosmopolitan-logo](/resources/assets/public/cosmopolitan-logo-full.png)
 
 ## Build Setup
 
