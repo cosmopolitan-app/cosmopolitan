@@ -12,7 +12,7 @@ class UsersSchema extends Schema {
         .notNullable()
         .unique()
       table.string('name').notNullable()
-      table.string('lastname')
+      table.string('surname')
       table.date('birthday', { precision: 6 })
       table.string('password').notNullable()
       table.enum('gender', ['male', 'female', 'other'])

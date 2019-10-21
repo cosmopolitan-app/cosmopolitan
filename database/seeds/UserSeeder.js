@@ -18,19 +18,13 @@ class UserSeeder {
   async run() {
     await User.create({
       name: 'Admin',
-      lastname: '',
-      birthday: '1980-12-12',
-      gender: 'other',
       email: 'admin@example.org',
       password: '123456',
       role: 'admin'
     })
 
     await User.create({
-      name: 'Event',
-      lastname: 'Manager',
-      birthday: '1980-09-04',
-      gender: 'other',
+      name: 'Manager',
       email: 'manager@example.org',
       password: '123456',
       role: 'event-manager'
