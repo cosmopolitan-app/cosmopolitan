@@ -1,27 +1,28 @@
 <template>
   <div>
-    <v-app-bar color="deep-purple accent-4">
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
+    <Navbar :show-navbar-links="true" />
+    <nuxt />
+    <v-footer :absolute="true" color="#FF0000" height="100" dark>
       <v-spacer></v-spacer>
-
-      <v-menu left bottom>
-        <v-list>
-          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </v-app-bar>
+      <v-col class="text-center" cols="12">
+        &copy;Kill meetup
+      </v-col>
+    </v-footer>
   </div>
 </template>
 
 <script>
-export default {}
+import Navbar from '@/components/navbar'
+export default {
+  components: { Navbar }
+}
 </script>
 
 <style>
 html {
   background-color: #8f8f8f;
+}
+.text-center {
+  text-align: center !important;
 }
 </style>
