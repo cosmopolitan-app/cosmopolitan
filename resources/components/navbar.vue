@@ -13,8 +13,10 @@
       <v-spacer></v-spacer>
 
       <div v-if="showNavbarLinks">
-        <v-btn depressed small color="#DADADA" light>Login</v-btn>
-        <v-btn depressed small color="#FF0000">Criar Conta</v-btn>
+        <v-btn depressed small color="#DADADA" light>{{
+          $t('navbar.login')
+        }}</v-btn>
+        <v-btn depressed small color="#FF0000">{{ $t('navbar.signUp') }}</v-btn>
       </div>
     </v-toolbar>
   </div>
