@@ -8,6 +8,9 @@ You need docker!
 # Setup basic configuration
 $ cp .env.example .env
 
+# Install Adonis CLI (if you don't have already)
+$ npm install --global @adonisjs/cli
+
 # Create a docker container with the database
 $ make init-db
 
