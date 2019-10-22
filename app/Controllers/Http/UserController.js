@@ -17,7 +17,7 @@ class UserController {
     // TODO: verify duplicate email
     const data = request.only([
       'name',
-      'lastname',
+      'surname',
       'birthday',
       'gender',
       'email',
@@ -40,7 +40,7 @@ class UserController {
       ? request.all()
       : request.only([
           'name',
-          'lastname',
+          'surname',
           'birthday',
           'gender',
           'email',
