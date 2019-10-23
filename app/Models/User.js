@@ -3,6 +3,10 @@
 const Model = use('Model')
 
 class User extends Model {
+  comments() {
+    return this.hasMany('App/Models/Comment')
+  }
+
   static boot() {
     super.boot()
 
