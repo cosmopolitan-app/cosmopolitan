@@ -8,10 +8,17 @@ class CommentSchema extends Schema {
     this.create('comments', (table) => {
       table.increments()
       table.integer('commenter_id')
-      table.foreign('commenter_id').references('users.id')
+      table
+        .foreign('commenter_id')
+        .references('users.id')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
       table.integer('event_id')
-      table.foreign('event_id').references('events.id')
-      table.boolean('is_answer').defaultTo(false)
+      table
+        .foreign('event_id')
+        .references('events.id')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
       table.integer('answer_to')
       table.foreign('answer_to').references('comments.id')
       table.string('title', [100]).notNullable()

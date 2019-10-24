@@ -4,12 +4,25 @@ const Comment = use('App/Models/Comment')
 
 class CommentController {
   index({ request }) {
-    const { page = 1, query = '' } = request.get()
+    const { page = 1, CommenterId, EventId } = request.get()
+
+    let query = Comment.query()
+
+    if (CommenterId) {
+      query = query.andWhere('commenter_id', 'ilike', CommenterId)
+    }
+
+    if (EventId) {
+      query = query.andWhere('event_id', 'ilike', EventId)
+    }
+
+    return query.orderBy('id', 'desc').paginate(+page)
+  }
+
+  answers({ request }) {
+    const { page = 1, AnswerTo } = request.get()
     return Comment.query()
-      .where((q) => {
-        q.orWhere('commenter', 'ilike', `%${query}%`)
-        q.orWhere('event_id', 'ilike', `%${query}%`)
-      })
+      .where('answer_to', 'ilike', AnswerTo)
       .orderBy('id', 'desc')
       .paginate(+page)
   }

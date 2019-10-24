@@ -39,6 +39,14 @@ Route.group(() => {
       ])
     )
 
+  Route.resource('comments', 'CommentController')
+    .apiOnly()
+    .middleware(
+      new Map([
+        [['comments.store', 'comments.update', 'comments.destroy'], ['auth']]
+      ])
+    )
+
   Route.get('cities', 'CityController.index').middleware(['staff'])
 
   Route.get('me', 'UserController.me').middleware(['auth'])
