@@ -47,6 +47,10 @@ Route.group(() => {
       ])
     )
 
+  Route.get('comments/:id/replies/:page', 'CommentController.replies')
+
+  Route.get('events/:eventId/comments', 'CommentController.index')
+
   Route.get('cities', 'CityController.index').middleware(['staff'])
 
   Route.get('me', 'UserController.me').middleware(['auth'])

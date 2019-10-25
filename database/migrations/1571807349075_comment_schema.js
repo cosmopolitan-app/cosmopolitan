@@ -7,23 +7,28 @@ class CommentSchema extends Schema {
   up() {
     this.create('comments', (table) => {
       table.increments()
-      table.integer('commenter_id')
+      table
+        .integer('commenter_id')
+        .unsigned()
+        .notNullable()
       table
         .foreign('commenter_id')
         .references('users.id')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
-      table.integer('event_id')
+      table
+        .integer('event_id')
+        .unsigned()
+        .notNullable()
       table
         .foreign('event_id')
         .references('events.id')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
-      table.integer('answer_to')
+      table.integer('answer_to').unsigned()
       table.foreign('answer_to').references('comments.id')
       table.string('title', [100]).notNullable()
       table.string('comment', [1000]).notNullable()
-      table.datetime('timestamp', { precision: 6 })
       table.timestamps()
     })
   }

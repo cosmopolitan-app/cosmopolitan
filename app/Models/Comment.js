@@ -5,11 +5,11 @@ const Model = use('Model')
 
 class Comment extends Model {
   user() {
-    return this.belongsTo('App/Model/User')
+    return this.belongsTo('App/Models/User')
   }
 
   event() {
-    return this.belongsTo('App/Model/Event')
+    return this.belongsTo('App/Models/Event')
   }
 
   answers() {

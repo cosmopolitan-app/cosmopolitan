@@ -4,25 +4,25 @@ const Comment = use('App/Models/Comment')
 
 class CommentController {
   index({ request }) {
-    const { page = 1, CommenterId, EventId } = request.get()
+    const { page = 1, commenterId, eventId } = request.get()
 
     let query = Comment.query()
 
-    if (CommenterId) {
-      query = query.andWhere('commenter_id', 'ilike', CommenterId)
+    if (commenterId) {
+      query = query.andWhere('commenter_id', commenterId)
     }
 
-    if (EventId) {
-      query = query.andWhere('event_id', 'ilike', EventId)
+    if (eventId) {
+      query = query.andWhere('event_id', eventId)
     }
 
     return query.orderBy('id', 'desc').paginate(+page)
   }
 
-  answers({ request }) {
-    const { page = 1, AnswerTo } = request.get()
+  replies({ request }) {
+    const { page = 1, id } = request.params
     return Comment.query()
-      .where('answer_to', 'ilike', AnswerTo)
+      .where('answer_to', id)
       .orderBy('id', 'desc')
       .paginate(+page)
   }
@@ -30,7 +30,8 @@ class CommentController {
   show({ request }) {
     const { id } = request.params
     return Comment.query()
-      .with('events')
+      .with('event')
+      .with('user')
       .where('id', id)
       .firstOrFail(id)
   }
@@ -41,7 +42,8 @@ class CommentController {
     const comment = await Comment.create(data)
 
     return Comment.query()
-      .with('events')
+      .with('event')
+      .with('user')
       .where('id', comment.id)
       .firstOrFail(comment.id)
   }
@@ -56,7 +58,6 @@ class CommentController {
     await comment.save()
 
     return Comment.query()
-      .with('events')
       .where('id', comment.id)
       .firstOrFail(comment.id)
   }
