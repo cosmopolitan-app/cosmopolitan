@@ -4,26 +4,18 @@ const Comment = use('App/Models/Comment')
 
 class CommentController {
   index({ request }) {
-    const { page = 1, commenterId, eventId } = request.get()
+    const { eventsId } = request.params
+    const { page = 1, replyTo } = request.get()
 
-    let query = Comment.query()
+    const query = Comment.query()
 
-    if (commenterId) {
-      query = query.andWhere('commenter_id', commenterId)
+    if (replyTo) {
+      query.andWhere({ replyTo })
     }
 
-    if (eventId) {
-      query = query.andWhere('event_id', eventId)
-    }
-
-    return query.orderBy('id', 'desc').paginate(+page)
-  }
-
-  replies({ request }) {
-    const { page = 1, id } = request.params
-    return Comment.query()
-      .where('answer_to', id)
-      .orderBy('id', 'desc')
+    return query
+      .andWhere('event_id', eventsId)
+      .orderBy('created_at')
       .paginate(+page)
   }
 

@@ -39,17 +39,20 @@ Route.group(() => {
       ])
     )
 
-  Route.resource('comments', 'CommentController')
+  Route.resource('events.comments', 'CommentController')
     .apiOnly()
     .middleware(
       new Map([
-        [['comments.store', 'comments.update', 'comments.destroy'], ['auth']]
+        [
+          [
+            'events.comments.store',
+            'events.comments.update',
+            'events.comments.destroy'
+          ],
+          ['auth']
+        ]
       ])
     )
-
-  Route.get('comments/:id/replies/:page', 'CommentController.replies')
-
-  Route.get('events/:eventId/comments', 'CommentController.index')
 
   Route.get('cities', 'CityController.index').middleware(['staff'])
 
