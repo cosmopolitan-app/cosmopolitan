@@ -191,14 +191,14 @@ export default {
 <style scoped>
 /* Customizing scrollbar */
 .is-scrollable::-webkit-scrollbar {
-  width: 30px;
-  height: 1px;
+  width: 7px;
+  height: 2px;
 }
 
 /* Track */
 .is-scrollable::-webkit-scrollbar-track {
   box-shadow: inset 0 0 1px grey;
-  border-radius: 1px;
+  border-radius: 10px;
 }
 
 /* Handle */
@@ -218,5 +218,7 @@ export default {
 
 .is-scrollable {
   overflow-x: auto;
+  scrollbar-color: #353535 #cdcdcd;
+  scrollbar-width: thin;
 }
 </style>
