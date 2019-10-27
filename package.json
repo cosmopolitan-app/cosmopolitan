@@ -31,6 +31,7 @@
     "@adonisjs/lucid": "^5.0.4",
     "@adonisjs/session": "^1.0.19",
     "@adonisjs/shield": "^1.0.4",
+    "@mdi/font": "^4.5.95",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
     "@nuxtjs/vuetify": "^1.0.0",

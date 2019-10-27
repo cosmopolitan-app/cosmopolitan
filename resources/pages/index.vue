@@ -90,9 +90,6 @@
                 src="http://lorempixel.com/output/abstract-q-c-100-100-8.jpg"
               ></v-img>
               <v-card-title>{{ e.title }}</v-card-title>
-              <!-- <v-card-subtitle class="text-truncate">
-                {{ e.description }}
-              </v-card-subtitle> -->
               <v-card-text class="text-truncate">
                 {{ e.text }}
               </v-card-text>

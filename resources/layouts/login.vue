@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-app>
     <Navbar :show-navbar-links="false" />
     <nuxt />
     <v-footer :absolute="true" color="#FF0000" height="100" dark>
@@ -8,7 +8,7 @@
         &copy;Kill meetup
       </v-col>
     </v-footer>
-  </div>
+  </v-app>
 </template>
 
 <script>
