@@ -87,10 +87,22 @@
               src="http://lorempixel.com/output/abstract-q-c-100-100-8.jpg"
             ></v-img>
             <v-card-title>{{ e.title }}</v-card-title>
-            <v-card-subtitle>{{ formatSubtitle(e.subtitle) }}</v-card-subtitle>
-            <v-card-text>
+            <v-card-subtitle class="text-truncate">
+              {{ e.subtitle }}
+            </v-card-subtitle>
+            <v-card-text class="text-truncate">
               {{ e.text }}
             </v-card-text>
+            <div class="is-scrollable">
+              <div style="display:inline-flex">
+                <v-chip v-for="i in 3" :key="i" class="mx-1">Category</v-chip>
+              </div>
+            </div>
+            <div style="float: right">
+              <v-btn small class="my-2 mr-2 purple lighten-1">
+                Information
+              </v-btn>
+            </div>
           </v-card>
         </v-slide-item>
       </v-slide-group>
@@ -171,10 +183,6 @@ export default {
     formatDate(date) {
       const [y, m, d] = date.split('-')
       return `${m}/${d}/${y}`
-    },
-
-    formatSubtitle(subtitle) {
-      return subtitle.length > 27 ? subtitle.substring(0, 24) + '...' : subtitle
     }
   }
 }
@@ -183,5 +191,9 @@ export default {
 <style scoped>
 .b {
   border: 1px solid red;
+}
+
+.is-scrollable {
+  overflow-x: auto;
 }
 </style>
