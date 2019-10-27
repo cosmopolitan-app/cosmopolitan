@@ -95,7 +95,7 @@
             </v-card-text>
             <div class="is-scrollable">
               <div style="display:inline-flex">
-                <v-chip v-for="j in 3" :key="j" class="mx-1">Category</v-chip>
+                <v-chip v-for="j in 3" :key="j" class="ma-1">Category</v-chip>
               </div>
             </div>
             <div style="float: right">
@@ -189,6 +189,29 @@ export default {
 </script>
 
 <style scoped>
+/* Customizing scrollbar */
+.is-scrollable::-webkit-scrollbar {
+  width: 30px;
+  height: 1px;
+}
+
+/* Track */
+.is-scrollable::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px grey;
+  border-radius: 1px;
+}
+
+/* Handle */
+.is-scrollable::-webkit-scrollbar-thumb {
+  background: #353535;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.is-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #cdcdcd;
+}
+
 .b {
   border: 1px solid red;
 }
