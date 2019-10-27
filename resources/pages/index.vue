@@ -95,7 +95,7 @@
             </v-card-text>
             <div class="is-scrollable">
               <div style="display:inline-flex">
-                <v-chip v-for="i in 3" :key="i" class="mx-1">Category</v-chip>
+                <v-chip v-for="j in 3" :key="j" class="mx-1">Category</v-chip>
               </div>
             </div>
             <div style="float: right">
