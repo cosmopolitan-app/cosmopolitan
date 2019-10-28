@@ -96,9 +96,8 @@
                   <v-img
                     src="http://lorempixel.com/output/abstract-q-c-100-100-8.jpg"
                   ></v-img>
-                  <v-card-title>{{ e.title }}</v-card-title>
                   <v-card-text class="text-truncate">
-                    {{ e.text }}
+                    {{ e.title }}
                   </v-card-text>
                   <div class="is-scrollable">
                     <div style="display:inline-flex">
