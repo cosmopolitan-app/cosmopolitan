@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <form @submit.prevent="onSubmit">
+  <form @submit.prevent="onSubmit">
+    <v-container>
       <v-row justify="center">
         <v-col md="3">
           <v-text-field
@@ -74,41 +74,59 @@
       </v-row>
       <br />
       <v-row>
-        <div class="mb-3">
-          <h1>Talks</h1>
-        </div>
-        <v-slide-group
-          multiple
-          show-arrows
-          class="my-2"
-          prev-icon="mdi-chevron-left-circle"
-          next-icon=" mdi-chevron-right-circle"
-        >
-          <v-slide-item v-for="(e, i) in events" :key="i">
-            <v-card class="mx-2" max-width="200">
-              <v-img
-                src="http://lorempixel.com/output/abstract-q-c-100-100-8.jpg"
-              ></v-img>
-              <v-card-title>{{ e.title }}</v-card-title>
-              <v-card-text class="text-truncate">
-                {{ e.text }}
-              </v-card-text>
-              <div class="is-scrollable">
-                <div style="display:inline-flex">
-                  <v-chip v-for="j in 3" :key="j" class="ma-1">Category</v-chip>
-                </div>
+        <v-row>
+          <v-col>
+            <div class="mb-3">
+              <h1>Talks</h1>
+            </div>
+          </v-col>
+        </v-row>
+        <v-row class="mt-5">
+          <v-col class="col-12">
+            <v-slide-group
+              v-if="events.length"
+              multiple
+              show-arrows
+              class="my-2"
+              prev-icon="mdi-chevron-left-circle"
+              next-icon=" mdi-chevron-right-circle"
+            >
+              <v-slide-item v-for="(e, i) in events" :key="i">
+                <v-card class="mx-2" max-width="200">
+                  <v-img
+                    src="http://lorempixel.com/output/abstract-q-c-100-100-8.jpg"
+                  ></v-img>
+                  <v-card-title>{{ e.title }}</v-card-title>
+                  <v-card-text class="text-truncate">
+                    {{ e.text }}
+                  </v-card-text>
+                  <div class="is-scrollable">
+                    <div style="display:inline-flex">
+                      <v-chip v-for="j in 3" :key="j" class="ma-1">
+                        Category
+                      </v-chip>
+                    </div>
+                  </div>
+                  <div style="float:right">
+                    <v-btn small class="my-2 mr-2 purple lighten-1">
+                      Information
+                    </v-btn>
+                  </div>
+                </v-card>
+              </v-slide-item>
+            </v-slide-group>
+          </v-col>
+          <v-col else class="col-md-6 col-xs-12">
+            <div class="d-table">
+              <div class="d-cell">
+                No items to show!
               </div>
-              <div style="float: right">
-                <v-btn small class="my-2 mr-2 purple lighten-1">
-                  Information
-                </v-btn>
-              </div>
-            </v-card>
-          </v-slide-item>
-        </v-slide-group>
+            </div>
+          </v-col>
+        </v-row>
       </v-row>
-    </form>
-  </v-container>
+    </v-container>
+  </form>
 </template>
 
 <script>
@@ -168,8 +186,16 @@ export default {
   background: #cdcdcd;
 }
 
-.b {
-  border: 1px solid red;
+.d-table {
+  display: table;
+  width: 100%;
+  height: 300px;
+}
+
+.d-cell {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
 }
 
 .is-scrollable {

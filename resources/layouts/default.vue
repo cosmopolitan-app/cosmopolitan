@@ -2,7 +2,7 @@
   <v-app>
     <Navbar :show-navbar-links="true" />
     <nuxt />
-    <v-footer :absolute="true" color="#FF0000" height="100" dark>
+    <v-footer :relative="true" color="#FF0000" height="100" dark>
       <v-spacer></v-spacer>
       <v-col class="text-center" cols="12">
         &copy;Kill meetup
