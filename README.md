@@ -15,7 +15,7 @@ $ npm install --global @adonisjs/cli
 $ make init-db
 
 # install dependencies
-$ npm i
+$ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev

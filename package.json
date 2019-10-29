@@ -31,15 +31,17 @@
     "@adonisjs/lucid": "^5.0.4",
     "@adonisjs/session": "^1.0.19",
     "@adonisjs/shield": "^1.0.4",
+    "@mdi/font": "^4.5.95",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/vuetify": "^1.0.0",
     "cross-env": "^5.2.0",
     "nuxt": "^2.0.0",
     "pg": "^7.12.1",
+    "vue-i18n": "^8.15.0",
     "vuetify": "^2.1.5"
   },
   "devDependencies": {
-    "@mdi/font": "^4.5.95",
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@vue/test-utils": "^1.0.0-beta.27",
@@ -52,8 +54,10 @@
     "husky": "^2.6.0",
     "jest": "^24.1.0",
     "lint-staged": "^8.2.1",
+    "node-sass": "^4.12.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.4",
+    "sass-loader": "^8.0.0",
     "vue-jest": "^4.0.0-0"
   }
 }
