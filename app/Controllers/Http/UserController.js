@@ -15,7 +15,14 @@ class UserController {
 
   async store({ request }) {
     // TODO: verify duplicate email
-    const data = request.only(['name', 'email', 'password'])
+    const data = request.only([
+      'name',
+      'surname',
+      'birthday',
+      'gender',
+      'email',
+      'password'
+    ])
 
     const user = await User.create(data)
 
@@ -31,7 +38,14 @@ class UserController {
     // TODO: verify duplicate email
     const data = isAdmin
       ? request.all()
-      : request.only(['name', 'email', 'password'])
+      : request.only([
+          'name',
+          'surname',
+          'birthday',
+          'gender',
+          'email',
+          'password'
+        ])
 
     const { id } = request.params
     const user = await User.findOrFail(id)
