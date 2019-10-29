@@ -4,13 +4,14 @@ const Comment = use('App/Models/Comment')
 
 class CommentController {
   index({ request }) {
-    const { eventsId } = request.params
-    const { page = 1, replyTo } = request.get()
+    const eventsId = request.params.events_id
+    const { page = 1 } = request.get()
+    const replyTo = request.get().replies_to
 
     const query = Comment.query()
 
     if (replyTo) {
-      query.andWhere({ replyTo })
+      query.andWhere('reply_to', replyTo)
     }
 
     return query
@@ -40,11 +41,17 @@ class CommentController {
       .firstOrFail(comment.id)
   }
 
-  async update({ request }) {
-    const data = request.all()
+  async update({ request, auth, response }) {
+    const currentUser = auth.current.user
+    const isAdmin = currentUser.role === 'admin'
 
+    const data = request.all()
     const { id } = request.params
     const comment = await Comment.findOrFail(id)
+
+    if (!isAdmin && comment.commenter_id !== currentUser.id) {
+      return response.status(403).send('Forbidden')
+    }
 
     comment.merge(data)
     await comment.save()
@@ -54,9 +61,16 @@ class CommentController {
       .firstOrFail(comment.id)
   }
 
-  async destroy({ request }) {
+  async destroy({ request, auth, response }) {
+    const currentUser = auth.current.user
+    const isAdmin = currentUser.role === 'admin'
+
     const { id } = request.params
     const comment = await Comment.findOrFail(id)
+
+    if (!isAdmin && comment.commenter_id !== currentUser.id) {
+      return response.status(403).send('Forbidden')
+    }
 
     await comment.delete()
   }
