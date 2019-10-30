@@ -7,6 +7,10 @@ class Session extends Model {
   event() {
     return this.belongsTo('App/Models/Event')
   }
+
+  speaker() {
+    return this.hasOne('App/Models/Speaker')
+  }
 }
 
 module.exports = Session
