@@ -15,6 +15,10 @@ class Event extends Model {
   setTags(obj) {
     return JSON.stringify(obj)
   }
+
+  speakers() {
+    return this.hasMany('App/Models/Speaker')
+  }
 }
 
 module.exports = Event

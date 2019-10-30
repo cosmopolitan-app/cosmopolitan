@@ -39,6 +39,21 @@ Route.group(() => {
       ])
     )
 
+  Route.resource('events.speakers', 'SpeakerController')
+    .apiOnly()
+    .middleware(
+      new Map([
+        [
+          [
+            'events.speakers.store',
+            'events.speakers.update',
+            'events.speakers.destroy'
+          ],
+          ['auth']
+        ]
+      ])
+    )
+
   Route.get('cities', 'CityController.index').middleware(['staff'])
 
   Route.get('me', 'UserController.me').middleware(['auth'])
