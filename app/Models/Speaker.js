@@ -4,12 +4,12 @@
 const Model = use('Model')
 
 class Speaker extends Model {
-  session() {
-    return this.hasMany('App/Models/Session')
+  sessions() {
+    return this.belongsToMany('App/Models/Session')
   }
 
-  event() {
-    return this.hasMany('App/Models/Event')
+  events() {
+    return this.belongsToMany('App/Models/Event')
   }
 }
 

@@ -8,6 +8,7 @@ class SpeakerSchema extends Schema {
     this.create('speakers', (table) => {
       table.increments()
       table.string('name').notNullable()
+      table.string('bio', [1000]).notNullable()
       table
         .integer('event_id')
         .unsigned()
