@@ -39,6 +39,12 @@ Route.group(() => {
       ])
     )
 
+  Route.get('/files/:id/render', 'FileController.render')
+
+  Route.resource('files', 'FileController')
+    .apiOnly()
+    .middleware(['auth', 'staff'])
+
   Route.get('cities', 'CityController.index').middleware(['staff'])
 
   Route.get('me', 'UserController.me').middleware(['auth'])

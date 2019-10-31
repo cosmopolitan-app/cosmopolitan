@@ -25,6 +25,7 @@
     "@adonisjs/auth": "^2.0.10",
     "@adonisjs/bodyparser": "^1.0.8",
     "@adonisjs/cors": "^1.0.2",
+    "@adonisjs/drive": "^1.0.4",
     "@adonisjs/fold": "^4.0.5",
     "@adonisjs/framework": "^4.0.27",
     "@adonisjs/ignitor": "^1.0.14",
